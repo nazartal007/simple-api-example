@@ -22,7 +22,7 @@ public class DemowebshopTests {
             cookies =
                     when()
                             .get(baseUrl + "build-your-cheap-own-computer")
-                            .then()
+                    .then()
                             .statusCode(200)
                             .extract()
                             .cookie("Nop.customer");
@@ -32,9 +32,9 @@ public class DemowebshopTests {
             String stringNumberItems =
                     given()
                             .cookie("Nop.customer=" + cookies + ";")
-                            .when()
+                    .when()
                             .get(baseUrl + "build-your-cheap-own-computer")
-                            .then()
+                    .then()
                             .statusCode(200)
                             .extract().htmlPath().getString("'**'.findAll{it.@class == 'cart-qty'}")
                             .substring(1, 2);
