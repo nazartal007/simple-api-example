@@ -91,6 +91,17 @@ public class SimpleApiLombookGpathTests {
             .get("/users?delay=3")
         .then()
             .spec(Specs.responseSpec)
-            .body("data.email", hasItem("janet.weaver@reqres.in"));;
+            .body("data.email.findAll{it}", hasItem("janet.weaver@reqres.in"));
+    }
+
+    @Test
+    void testWithGpath2(){
+        given()
+                .spec(Specs.request)
+            .when()
+                .get("/unknown")
+            .then()
+                .spec(Specs.responseSpec)
+                .body("data.name.findAll{it}", hasItem("fuchsia rose"));
     }
 }
